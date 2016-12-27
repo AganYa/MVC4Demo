@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BPMModelStoreContainer" CdmEntityContainer="BPMEntities3">
+    <EntitySetMapping Name="EL_MasterData">
+      <EntityTypeMapping TypeName="BPMModel.EL_MasterData">
+        <MappingFragment StoreEntitySet="EL_MasterData">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+          <ScalarProperty Name="K2ProcessInstID" ColumnName="K2ProcessInstID" />
+          <ScalarProperty Name="StaffCode" ColumnName="StaffCode" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+          <ScalarProperty Name="HolidayType" ColumnName="HolidayType" />
+          <ScalarProperty Name="StratDate" ColumnName="StratDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartTimeSpan" ColumnName="StartTimeSpan" />
+          <ScalarProperty Name="EndTimeSpan" ColumnName="EndTimeSpan" />
+          <ScalarProperty Name="CalendarDays" ColumnName="CalendarDays" />
+          <ScalarProperty Name="WorkingDays" ColumnName="WorkingDays" />
+          <ScalarProperty Name="ReasonForLeave" ColumnName="ReasonForLeave" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="StaffAccount" ColumnName="StaffAccount" />
+          <ScalarProperty Name="DelegateStaffAccount" ColumnName="DelegateStaffAccount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EL_MasterDataDetails">
+      <EntityTypeMapping TypeName="BPMModel.EL_MasterDataDetails">
+        <MappingFragment StoreEntitySet="EL_MasterDataDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ELID" ColumnName="ELID" />
+          <ScalarProperty Name="Field1" ColumnName="Field1" />
+          <ScalarProperty Name="Field2" ColumnName="Field2" />
+          <ScalarProperty Name="Field3" ColumnName="Field3" />
+          <ScalarProperty Name="Field4" ColumnName="Field4" />
+          <ScalarProperty Name="Field5" ColumnName="Field5" />
+          <ScalarProperty Name="Field6" ColumnName="Field6" />
+          <ScalarProperty Name="Field7" ColumnName="Field7" />
+          <ScalarProperty Name="Field8" ColumnName="Field8" />
+          <ScalarProperty Name="Field9" ColumnName="Field9" />
+          <ScalarProperty Name="Field10" ColumnName="Field10" />
+          <ScalarProperty Name="Field11" ColumnName="Field11" />
+          <ScalarProperty Name="Field12" ColumnName="Field12" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EL_PublicHoliday">
+      <EntityTypeMapping TypeName="BPMModel.EL_PublicHoliday">
+        <MappingFragment StoreEntitySet="EL_PublicHoliday">
+          <ScalarProperty Name="EL_PHID" ColumnName="EL_PHID" />
+          <ScalarProperty Name="EL_HolidayDate" ColumnName="EL_HolidayDate" />
+          <ScalarProperty Name="EL_HolidayRemark" ColumnName="EL_HolidayRemark" />
+          <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="IsReverse" ColumnName="IsReverse" />
+          <ScalarProperty Name="IsTrueHoliday" ColumnName="IsTrueHoliday" />
+          <ScalarProperty Name="IsWeekend" ColumnName="IsWeekend" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

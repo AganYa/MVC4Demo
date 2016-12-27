@@ -1,0 +1,92 @@
+﻿@*@model List<MvcDemo3.Models.EL_MasterData>*@
+@model IEnumerable<MvcDemo3.Models.EL_MasterDataDetails>
+@{
+    ViewBag.Title = "Edit";
+}
+@using MvcDemo3.Models
+   <style type="text/css">
+        #tbList {
+            border:1px solid #0094ff;
+            width:400px;
+            margin:20px auto;
+            border-collapse:collapse;
+        }
+        #tbList td,#tbList th{
+            border:1px solid #0094ff;
+            padding:2px;
+        }
+
+    </style>
+<p>
+ @using (Html.BeginForm("View1", "Master", FormMethod.Get)) 
+    { 
+        <p>     
+              
+            查询：@Html.TextBox("SearchString") 
+            <input type="submit" value="查询" /> 
+
+        </p> 
+    } 
+
+</p>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <table id="tbList">
+        <tr>
+            <th>ID</th>
+            <th>ELID</th>
+            <th>Field1</th>
+            <th>Field2</th>
+            <th>操作</th>
+        </tr>
+
+    @foreach (EL_MasterDataDetails item in Model)
+    {
+        <tr>
+             <td style="text-align:center">
+                <label>@item.ID</label>
+            </td>
+
+            <td style="text-align:center">
+                <label>@item.ELID</label>
+            </td>
+
+            <td style="text-align:center">
+                <label>@item.Field1</label>
+            </td>
+
+            <td style="text-align:center">
+                <label>@item.Field2</label>
+            </td>
+
+            <td>
+              
+               <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                     <a href="/Master/Delete/@item.ID">删</a>
+               </button>
+                <a href="/Master/Modify/@item.ID">改</a>
+            </td>
+
+        </tr>
+    }
+
+
+</table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

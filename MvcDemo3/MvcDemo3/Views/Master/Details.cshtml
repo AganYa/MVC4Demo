@@ -1,0 +1,42 @@
+﻿@model List<MvcDemo3.Models.EL_MasterData>
+
+@{
+    ViewBag.Title = "Details";
+}
+@using MvcDemo3.Models
+
+<table width="100%">
+   <tr>
+            <th>StaffName</th>
+            <th>StratDate</th>
+            <th>EndDate</th>
+            <th>StaffAccount</th>
+            <th>DelegateStaffAccount</th>
+        </tr>
+    @foreach (EL_MasterData item in Model as List<EL_MasterData>)
+    {
+        <tr>
+            <td style="text-align:center">
+                <label>@item.StaffName</label>
+            </td>
+
+            <td style="text-align:center">
+                <label>@item.StratDate</label>
+            </td>
+
+            <td style="text-align:center">
+                <label>@item.EndDate</label>
+            </td>
+
+            <td style="text-align:center">
+                <label>@item.StaffAccount</label>
+            </td>
+
+            <td style="text-align:center">
+                <label>@item.DelegateStaffAccount</label>
+            </td>
+
+        </tr>
+    }
+    
+</table>
