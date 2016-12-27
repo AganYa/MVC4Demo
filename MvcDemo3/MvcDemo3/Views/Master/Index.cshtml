@@ -1,0 +1,163 @@
+﻿@model IEnumerable<MvcDemo3.Models.EL_MasterDataDetails>
+@{
+    ViewBag.Title = "Index";
+}
+@using MvcDemo3.Models
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">修改</h4>
+      </div>
+      <div class="modal-body">
+          <div class="isModitfy">
+          </div>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
+ <h2 style="text-align:center">首页</h2>
+    <form action="/Master/Index" method="post">
+      <!--第一行 四列-->
+     <br>
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+                <input type="text" name="ID" />
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <input type="text" name="StaffCode" />
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <input type="text" name="StaffName" />
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <input type="text" name="StaffName" />
+            </div>
+        </div>
+
+     <!--第二行 四列-->
+      <br>
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+                <input type="text"  />
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <input type="text"  />
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <input type="text"  />
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <input type="text"  />
+            </div>
+        </div>
+
+         <!--第三行 四列-->
+        <br>
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+                <input type="text"  />
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <input type="text" />
+            </div>
+
+            <div class="col-xs-6 col-sm-3">
+                <input type="text"  />
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <input type="text"  />
+            </div>
+        </div>
+        
+
+         <!--第四行 四列-->
+        <br>
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+                <input type="text"  />
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <input type="text"  />
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <input type="text"  />
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <input type="text"  />
+            </div>
+        </div>
+        <!--放部分视图的容器-->
+        <div style="padding-top:50px" id="EditID"></div>
+
+    <div style="padding-top:50px;">
+        <h4 style="text-align:center">
+            <p>
+            <input type="submit" value="保存"/>
+            </p>
+        </h4>
+       <a href="/Master/Index">返回主界面</a>
+    </div>   
+
+<p>  
+<a href="/Master/Details">查询</a>
+</p>
+<input type="button" value="编辑" id="btnLoadPart" onclick="rel()" />
+</form>
+
+
+<script type="text/javascript">
+    //点击编辑按钮
+    function rel() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("get", "/Master/DetailsPartialView", true);
+        xhr.setRequestHeader("If-Modified-Since", 0);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var htmlNew = xhr.responseText;
+                document.getElementById("EditID").innerHTML = htmlNew;
+            }
+        };
+        xhr.send();
+    };
+    //删除事件
+    function isDel(a) {
+        if (confirm("是否删除")) {
+            $.post("/Master/Delete/" + a, null, function (res) {
+                location.reload();
+            })
+            alert("删除成功");
+        }
+    };
+    //修改事件
+    function isEdit(c) {
+        $.get("/Master/Modify/" + c, null, function (res) {
+            $(".isModitfy").html(res);
+        })
+    };
+    ////保存事件
+    //$(function () {
+    //    $("#save").click(function () {
+    //       $("#modify").trigger("sure");
+    //    //});
+    //    //$("#sure").click(function () {
+
+    //       // var a = $(this).parent("td").parents("tr").eq(0).children("td").eq(1).val();
+
+    //        $.post("/Master/Modify" , null, function (res) {
+
+    //            location.reload();
+    //        })
+    //    });
+
+    //});
+</script>
+
+
+

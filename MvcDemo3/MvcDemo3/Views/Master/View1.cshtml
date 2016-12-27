@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+   }
+@{
+    ViewBag.Title = "View1";
+}
+@using MvcDemo3.Models
+<h2>查询视图Test</h2>
+
+<table border="1">
+    <tr>
+         <th>A_ProcessID</th>
+         <th>A_StaffCode</th>
+         <th>A_StaffName</th>
+         <th>ELID</th>
+         <th>Field1</th>
+         <th>Field2</th>
+     </tr>
+   @foreach (var item in Model )
+   {
+    <tr>
+         <th>@item.A_ProcessID</th>
+         <th>@item.A_StaffCode</th>
+         <th>@item.A_StaffName</th>
+         <th>@item.ELID</th>
+         <th>@item.Field1</th>
+         <th>@item.Field2</th>
+    </tr>
+   }
+</table>

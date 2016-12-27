@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BPMModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BPMEntities3" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="EL_MasterData" EntityType="BPMModel.EL_MasterData" />
+    <EntitySet Name="EL_MasterDataDetails" EntityType="BPMModel.EL_MasterDataDetails" />
+    <EntitySet Name="EL_PublicHoliday" EntityType="BPMModel.EL_PublicHoliday" />
+  </EntityContainer>
+  <EntityType Name="EL_MasterData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ProcessID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="K2ProcessInstID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="StaffCode" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="StaffName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="HolidayType" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="StratDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="StartTimeSpan" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="EndTimeSpan" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="CalendarDays" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="WorkingDays" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="ReasonForLeave" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="StaffAccount" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DelegateStaffAccount" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="EL_MasterDataDetails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ELID" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Field1" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Field2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Field3" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Field4" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Field5" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Field6" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Field7" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Field8" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Field9" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Field10" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Field11" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Field12" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="EL_PublicHoliday">
+    <Key>
+      <PropertyRef Name="EL_PHID" />
+    </Key>
+    <Property Name="EL_PHID" Type="Int32" Nullable="false" />
+    <Property Name="EL_HolidayDate" Type="DateTime" Precision="3" />
+    <Property Name="EL_HolidayRemark" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="Month" Type="Int32" />
+    <Property Name="IsReverse" Type="Int16" />
+    <Property Name="IsTrueHoliday" Type="Int16" Nullable="false" />
+    <Property Name="IsWeekend" Type="Int16" />
+  </EntityType>
+</Schema>

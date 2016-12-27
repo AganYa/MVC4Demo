@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MvcDemo3.Models.EL_MasterDataDetails>
+
+@using MvcDemo3.Models
+
+<style type="text/css">
+        #tbList {
+            border:1px solid #0094ff;
+            width:100%;
+            margin:20px auto;
+            border-collapse:collapse;
+        }
+        #tbList td,#tbList th{
+            border:1px solid #0094ff;
+            padding:3px;
+        }
+
+</style>
+<table id="tbList">
+        <tr>
+            <th>ID</th>
+            <th>ELID</th>
+            <th>Field1</th>
+            <th>Field2</th>
+            <th>操作</th>
+        </tr>
+     
+    @foreach (var item2 in Model)
+    {
+        <tr>
+             <td style="text-align:center">
+                <label>@item2.ID</label>
+            </td>
+
+            <td style="text-align:center">
+                <label>@item2.ELID</label>
+            </td>
+
+            <td style="text-align:center">
+                <label>@item2.Field1</label>
+            </td>
+
+            <td style="text-align:center">
+                <label>@item2.Field2</label>
+            </td>
+
+            <td>
+               <input type="button"  value="删除" onclick="isDel('@item2.ID')"/>
+               <input type="button" id="Btn" value="修改" onclick="isEdit('@item2.ID')" data-toggle="modal" data-target="#myModal" />
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+

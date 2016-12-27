@@ -1,0 +1,30 @@
+﻿
+
+@*@section scripts{
+    <script type="text/javascript">
+        
+        window.onload = function () {
+            document.getElementById("btnLoadPart").onclick = function () {
+                var xhr = new XMLHttpRequest();
+                xhr.open("get", "/Master/LoginPart", true);
+                xhr.setRequestHeader("If-Modified-Since", 0);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200)
+                    {
+                        var htmlNew = xhr.responseText;
+                        document.getElementById("tbList").innerHTML = htmlNew;
+                    }
+                };
+                xhr.send(null);
+            };
+        };
+    </script>
+}
+
+<input type="button" value="请求分部视图" id="btnLoadPart" />
+
+*@
+
+
+
+  

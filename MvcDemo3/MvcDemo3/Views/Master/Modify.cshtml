@@ -1,0 +1,38 @@
+﻿@model MvcDemo3.Models.EL_MasterDataDetails
+
+@{
+    ViewBag.Title = "Modify";
+}
+<form action="/Master/Modify" method="post" id="modify">
+    <input type="hidden" name="ID" value="@Model.ID" />
+    <table>
+        <tr>
+            <td>ELID：</td>
+            <td><input type="text" name="ELID" value="@Model.ELID" /></td>
+        </tr>
+
+         <tr>
+            <td>时间：</td>
+            <td><input type="text" name="Field1" value="@Model.Field1" /></td>
+        </tr>
+
+         <tr>
+            <td>地点：</td>
+            <td><input type="text" name="Field2" value="@Model.Field2" /></td>
+        </tr>
+        <tr>
+            <td >
+                <input type="submit"  value="确定" />
+            </td>
+            <td>
+               <button type="button" data-dismiss="modal">取消</button>
+            </td>
+        </tr>
+    </table>
+
+    </form>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BPMModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="BPMModelStoreContainer">
+          <EntitySet Name="EL_MasterData" EntityType="BPMModel.Store.EL_MasterData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EL_MasterDataDetails" EntityType="BPMModel.Store.EL_MasterDataDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EL_PublicHoliday" EntityType="BPMModel.Store.EL_PublicHoliday" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="EL_MasterData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ProcessID" Type="varchar" MaxLength="50" />
+          <Property Name="K2ProcessInstID" Type="varchar" MaxLength="50" />
+          <Property Name="StaffCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="StaffName" Type="nvarchar" MaxLength="20" />
+          <Property Name="HolidayType" Type="varchar" MaxLength="10" />
+          <Property Name="StratDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="StartTimeSpan" Type="nvarchar" MaxLength="10" />
+          <Property Name="EndTimeSpan" Type="nvarchar" MaxLength="10" />
+          <Property Name="CalendarDays" Type="decimal" Scale="1" />
+          <Property Name="WorkingDays" Type="decimal" Scale="1" />
+          <Property Name="ReasonForLeave" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="StaffAccount" Type="varchar" MaxLength="50" />
+          <Property Name="DelegateStaffAccount" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EL_MasterDataDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ELID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Field1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Field2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Field3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Field4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Field5" Type="nvarchar" MaxLength="50" />
+          <Property Name="Field6" Type="nvarchar" MaxLength="50" />
+          <Property Name="Field7" Type="nvarchar" MaxLength="50" />
+          <Property Name="Field8" Type="nvarchar" MaxLength="50" />
+          <Property Name="Field9" Type="nvarchar" MaxLength="50" />
+          <Property Name="Field10" Type="nvarchar" MaxLength="50" />
+          <Property Name="Field11" Type="nvarchar" MaxLength="50" />
+          <Property Name="Field12" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EL_PublicHoliday">
+          <Key>
+            <PropertyRef Name="EL_PHID" />
+          </Key>
+          <Property Name="EL_PHID" Type="int" Nullable="false" />
+          <Property Name="EL_HolidayDate" Type="datetime" />
+          <Property Name="EL_HolidayRemark" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Month" Type="int" />
+          <Property Name="IsReverse" Type="smallint" />
+          <Property Name="IsTrueHoliday" Type="smallint" Nullable="false" />
+          <Property Name="IsWeekend" Type="smallint" />
+        </EntityType>
+        <Function Name="Is_WorkDay" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tempDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Sum_WorkHours" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+          <Parameter Name="StartHour" Type="int" Mode="In" />
+          <Parameter Name="EndHour" Type="int" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BPMModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BPMEntities3" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="EL_MasterData" EntityType="BPMModel.EL_MasterData" />
+          <EntitySet Name="EL_MasterDataDetails" EntityType="BPMModel.EL_MasterDataDetails" />
+          <EntitySet Name="EL_PublicHoliday" EntityType="BPMModel.EL_PublicHoliday" />
+        </EntityContainer>
+        <EntityType Name="EL_MasterData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ProcessID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="K2ProcessInstID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="StaffCode" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="StaffName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="HolidayType" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="StratDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="StartTimeSpan" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="EndTimeSpan" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="CalendarDays" Type="Decimal" Precision="18" Scale="1" />
+          <Property Name="WorkingDays" Type="Decimal" Precision="18" Scale="1" />
+          <Property Name="ReasonForLeave" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="StaffAccount" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DelegateStaffAccount" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="EL_MasterDataDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ELID" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Field1" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Field2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Field3" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Field4" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Field5" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Field6" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Field7" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Field8" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Field9" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Field10" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Field11" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Field12" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="EL_PublicHoliday">
+          <Key>
+            <PropertyRef Name="EL_PHID" />
+          </Key>
+          <Property Name="EL_PHID" Type="Int32" Nullable="false" />
+          <Property Name="EL_HolidayDate" Type="DateTime" Precision="3" />
+          <Property Name="EL_HolidayRemark" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="IsReverse" Type="Int16" />
+          <Property Name="IsTrueHoliday" Type="Int16" Nullable="false" />
+          <Property Name="IsWeekend" Type="Int16" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BPMModelStoreContainer" CdmEntityContainer="BPMEntities3">
+          <EntitySetMapping Name="EL_MasterData">
+            <EntityTypeMapping TypeName="BPMModel.EL_MasterData">
+              <MappingFragment StoreEntitySet="EL_MasterData">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+                <ScalarProperty Name="K2ProcessInstID" ColumnName="K2ProcessInstID" />
+                <ScalarProperty Name="StaffCode" ColumnName="StaffCode" />
+                <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+                <ScalarProperty Name="HolidayType" ColumnName="HolidayType" />
+                <ScalarProperty Name="StratDate" ColumnName="StratDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartTimeSpan" ColumnName="StartTimeSpan" />
+                <ScalarProperty Name="EndTimeSpan" ColumnName="EndTimeSpan" />
+                <ScalarProperty Name="CalendarDays" ColumnName="CalendarDays" />
+                <ScalarProperty Name="WorkingDays" ColumnName="WorkingDays" />
+                <ScalarProperty Name="ReasonForLeave" ColumnName="ReasonForLeave" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="StaffAccount" ColumnName="StaffAccount" />
+                <ScalarProperty Name="DelegateStaffAccount" ColumnName="DelegateStaffAccount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EL_MasterDataDetails">
+            <EntityTypeMapping TypeName="BPMModel.EL_MasterDataDetails">
+              <MappingFragment StoreEntitySet="EL_MasterDataDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ELID" ColumnName="ELID" />
+                <ScalarProperty Name="Field1" ColumnName="Field1" />
+                <ScalarProperty Name="Field2" ColumnName="Field2" />
+                <ScalarProperty Name="Field3" ColumnName="Field3" />
+                <ScalarProperty Name="Field4" ColumnName="Field4" />
+                <ScalarProperty Name="Field5" ColumnName="Field5" />
+                <ScalarProperty Name="Field6" ColumnName="Field6" />
+                <ScalarProperty Name="Field7" ColumnName="Field7" />
+                <ScalarProperty Name="Field8" ColumnName="Field8" />
+                <ScalarProperty Name="Field9" ColumnName="Field9" />
+                <ScalarProperty Name="Field10" ColumnName="Field10" />
+                <ScalarProperty Name="Field11" ColumnName="Field11" />
+                <ScalarProperty Name="Field12" ColumnName="Field12" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EL_PublicHoliday">
+            <EntityTypeMapping TypeName="BPMModel.EL_PublicHoliday">
+              <MappingFragment StoreEntitySet="EL_PublicHoliday">
+                <ScalarProperty Name="EL_PHID" ColumnName="EL_PHID" />
+                <ScalarProperty Name="EL_HolidayDate" ColumnName="EL_HolidayDate" />
+                <ScalarProperty Name="EL_HolidayRemark" ColumnName="EL_HolidayRemark" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="IsReverse" ColumnName="IsReverse" />
+                <ScalarProperty Name="IsTrueHoliday" ColumnName="IsTrueHoliday" />
+                <ScalarProperty Name="IsWeekend" ColumnName="IsWeekend" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
